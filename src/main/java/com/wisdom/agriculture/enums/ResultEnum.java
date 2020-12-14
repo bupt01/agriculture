@@ -3,7 +3,7 @@ package com.wisdom.agriculture.enums;
 import lombok.Getter;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/11/19 0019 16:40
  */
 @Getter

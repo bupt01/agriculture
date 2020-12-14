@@ -4,7 +4,7 @@ package com.wisdom.agriculture.exception;
 import com.wisdom.agriculture.enums.MyExceptionEnum;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/10/19 0019 18:35
  */
 public class MyException extends RuntimeException {

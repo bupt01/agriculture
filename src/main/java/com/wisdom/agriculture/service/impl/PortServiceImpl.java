@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.concurrent.Executor;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/10/20 0020 21:14
  * <p>
  * 对串口操作的类

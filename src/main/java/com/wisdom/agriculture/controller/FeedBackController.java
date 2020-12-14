@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 作者：王宇
+ * 作者：ledendary-666
  * 创建时间：2019/3/29 0029 12:00
  * 描述：
  */
@@ -28,7 +28,7 @@ public class FeedBackController {
      *     "message": "发布成功",
      *     "data": {
      *         "id": "32",
-     *         "name": "王宇",
+     *         "name": "ledendary-666",
      *         "phone": "145141",
      *         "email": "41515@qq.com",
      *         "content": "postman"

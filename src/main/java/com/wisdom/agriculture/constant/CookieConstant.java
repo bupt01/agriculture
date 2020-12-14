@@ -2,7 +2,7 @@ package com.wisdom.agriculture.constant;
 
 /**
  * 设置cookie常量
- * create by wangyu
+ *
  * 2018/11/19 0019 10:45
  */
 public interface CookieConstant {

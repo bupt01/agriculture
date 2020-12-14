@@ -3,7 +3,7 @@ package com.wisdom.agriculture.result;
 import lombok.Data;
 
 /**
- * 作者：王宇
+ * 作者：ledendary-666
  * 创建时间：2019/3/29 0029 9:04
  * 描述：
  */

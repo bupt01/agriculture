@@ -3,7 +3,7 @@ package com.wisdom.agriculture.util;
 import java.util.Random;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/10/22 0022 9:22
  * <p>
  * 产生随机数的类

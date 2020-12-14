@@ -1,7 +1,7 @@
 package com.wisdom.agriculture.enums;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/10/24 0024 14:07
  * <p>
  * 枚举类

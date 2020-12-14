@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.TooManyListenersException;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/10/19 0019 15:55
  * <p>
  * 此类为java实现串口通信的工具类

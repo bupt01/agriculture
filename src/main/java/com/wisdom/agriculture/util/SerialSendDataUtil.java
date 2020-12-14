@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/10/27 0027 15:32
  * <p>
  * 主要是被service层调用，获取温度，湿度，光照强度的工具类

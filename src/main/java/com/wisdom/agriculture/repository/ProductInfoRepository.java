@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/10/22 0022 8:34
  */
 public interface ProductInfoRepository extends JpaRepository<ProductInfo,String> {

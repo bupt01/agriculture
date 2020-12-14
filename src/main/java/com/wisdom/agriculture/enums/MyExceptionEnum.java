@@ -1,7 +1,7 @@
 package com.wisdom.agriculture.enums;
 
 /**
- * create by wangyu
+ * create by ledendary-666
  * 2018/10/19 0019 18:38
  */
 public enum MyExceptionEnum {

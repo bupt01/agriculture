@@ -4,7 +4,7 @@ import com.wisdom.agriculture.domain.Publish;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * 作者：王宇
+ * 作者：ledendary-666
  * 创建时间：2019/4/8 0008 9:39
  * 描述：
  */

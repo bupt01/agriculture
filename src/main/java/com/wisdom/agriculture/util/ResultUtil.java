@@ -3,7 +3,7 @@ package com.wisdom.agriculture.util;
 import com.wisdom.agriculture.result.Result;
 
 /**
- * 作者：王宇
+ * 作者：ledendary-666
  * 创建时间：2019/3/29 0029 9:06
  * 描述：
  */
