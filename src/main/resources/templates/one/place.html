@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>基地介绍</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<style type="text/css">
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    /*1.多余的隐藏，
+      2.多余的用省略号代替
+      3.不换行
+    */
+    .news1 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    #page {
+        background-color: #76B34B; /*-------------------整体的背景颜色  */
+        height: 100%;
+    }
+
+    #top {
+        width: 100%;
+        height: 70px;
+    }
+
+    #top_left {
+        width: 17%;
+        float: left;
+    }
+
+    #top_left img {
+        width: 265px;
+        height: 50px;
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+
+    #top_right {
+        width: 900px;
+        float: right;
+        margin-left: 100px;
+        margin-top: 30px;
+    }
+
+    #top_right div {
+        float: left;
+        width: 100px;
+        height: 26px;
+        border: 0.5px solid #3AD56F;
+        padding-top: 5px;
+        margin-right: 17px;
+        border-radius: 20px;
+        /* font-family: cursive;*/
+        font-size: 15px;
+        /* font-weight: bold; */
+
+    }
+
+    .top_rightSecond {
+        background-color: #139D5A;
+    }
+
+    #top_right div:hover {
+        cursor: pointer;
+        background-color: #139D5A;
+    }
+
+    #top_right a {
+        text-decoration: none;
+        color: white;
+    }
+
+    /***************************************main*************************/
+    #main {
+        width: 100%;
+        height: auto;
+    }
+
+    #main_title {
+        margin-top: 40px;
+        font-size: 24px;
+        color: white;
+    }
+
+    /****************************轮播图*************************************/
+    ul {
+        list-style: none;
+    }
+
+    #main_image {
+        width: 1000px;
+        height: 350px; /*其实就是图片的高度*/
+        border: 1px #8CEE80 solid;
+        border-radius: 5px;
+        margin: 20px auto 0px;
+        position: relative;
+        overflow: hidden; /*此处需要将溢出框架的图片部分隐藏*/
+    }
+
+    #main_image img {
+        width: 1000px;
+        height: 350px;
+    }
+
+    #main_image li :hover {
+        cursor: pointer;
+    }
+
+    #main_image ul {
+        width: 4000px;
+        position: relative;
+    }
+
+    #main_image ul li {
+        float: left; /*让四张图片左浮动，形成并排的横着布局，方便点击按钮时的左移动*/
+        width: 1000px;
+    }
+
+    .imagetitle {
+        width: 100%;
+        height: 26px;
+        border: 0px solid #fff;
+        position: absolute;
+        left: 0px;
+        top: 315px;
+        font-size: 16px;
+        color: #fff;
+        padding-top: 8px;
+        padding-left: 20px;
+        background-color: green;
+        opacity: 0.4;
+    }
+
+    #main_image .showNav { /*用绝对定位给数字按钮进行布局*/
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    /* #main_image .showNav  */
+    .showNavSpan {
+        cursor: pointer;
+        display: block;
+        float: left;
+        width: 20px;
+        height: 20px;
+        background: #8CEE80;
+        margin-left: 2px;
+        color: #fff;
+    }
+
+    #main_image .showNav .active {
+        background-color: #76B34B;
+    }
+
+    #textRoll {
+        margin: 0px auto 0px;
+        width: 1000px;
+        height: 25px;
+        font-size: 15px;
+        padding-top: 3px;
+
+    }
+
+    #textRoll a {
+        text-decoration: none;
+        color: green;
+    }
+
+    #textRoll a:hover {
+        color: blue;
+    }
+
+    .textr2 {
+        float: left;
+    }
+
+    #main_content {
+        width: 1000px;
+        height: 160px;
+        margin: 0px auto 10px;
+        border: 1px solid green;
+        padding-top: 10px;
+        background-color: #8CEE80;
+        opacity: 0.9;
+        border-radius: 5px;
+    }
+
+    #content1 {
+        border: 1px solid green;
+        width: 34%;
+        height: 150px;
+        float: left;
+        margin-left: 9px;
+        border-radius: 5px;
+    }
+
+    #title1 {
+        /* background-color: #76B34B; */
+        height: 27px;
+
+    }
+
+    .title1_span {
+        display: block;
+        background-color: white;
+        font-size: 14px;
+        width: 79px;
+        height: 22px;
+        float: left;
+        padding-top: 5px;
+        padding-left: 34px;
+        border-radius: 5px;
+    }
+
+    .title1_span:hover {
+        cursor: pointer;
+        background-color: #76B34B;
+    }
+
+    .span1 {
+        background-color: #76B34B;
+    }
+
+    #news {
+        border: 1px solid green;
+        height: 0px;
+        color: green;
+    }
+
+    #news li:HOVER {
+        color: blue;
+        cursor: pointer;
+    }
+
+    .news2, .news3 {
+        display: none;
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    .news1 {
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    .catalog1 {
+        position: absolute;
+        background-image: url("images/co.jpg");
+        background-repeat: no-repeat;
+        background-size: 15px 15px;
+        width: 15px;
+        height: 15px;
+        margin-top: 3px;
+        margin-left: -20px;
+    }
+
+    #content_place {
+        border: 1px solid green;
+        width: 31%;
+        height: 150px;
+        float: left;
+        margin-left: 2px;
+        overflow: auto;
+        border-radius: 5px;
+    }
+
+    #content_place_title {
+        padding-top: 5px;
+        background-color: #76B34B;
+        height: 23px;
+    }
+
+    #content_place::-webkit-scrollbar {
+        width: 5px;
+        height: 50px;
+    }
+
+    #content_place::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    #content_place::-webkit-scrollbar-track {
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .fur_place {
+        float: left;
+        width: 33%;
+        text-align: center;
+        padding: 10px 0px;
+        border: 0px solid;
+    }
+
+    .fur_place img {
+        width: 85px;
+        height: 80px;
+        border-radius: 6px;
+    }
+
+    .fur_place a {
+        font-size: 14px;
+        text-decoration: none;
+        color: olive;
+    }
+
+    .fur_place a:hover {
+        color: green;
+    }
+
+    #content2 {
+        border: 1px solid green;
+        width: 32%;
+        height: 150px;
+        float: left;
+        margin-left: 2px;
+        border-radius: 5px;
+
+    }
+
+    #title2 {
+        padding-top: 5px;
+        background-color: #76B34B;
+        height: 23px;
+        border-radius: 5px;
+        border: 0.5px solid #76B34B;
+        border-bottom-color: green;
+    }
+
+    #items ul {
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    #items li:HOVER {
+        color: blue;
+        cursor: pointer;
+    }
+
+    #bottom {
+        width: 100%;
+        height: 25px;
+        background-color: #8Cc480;
+        padding-top: 5px;
+    }
+</style>
+
+
+<script src="webjars/jquery/3.3.1/jquery.js"></script>
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+<link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../static/css/style.css">
+
+
+<script type="text/javascript">
+    function prePage(page, size) {
+
+    }
+
+    $(function () {
+        // 1.路径
+        var url = "/news/list";
+        // 2.请求参数
+        var param = "";
+
+        //get请求
+        /*$.get(url,function (data) {
+            alert("get");
+            alert(data);
+            alert(data.getCode())
+        },"json")*/
+
+
+        //ajax
+        $.ajax({
+            "url": url,
+            "success": function (data) {
+                showData(data);
+                // alert("成功");
+                // alert(data.code)
+            },
+            "dataType": "json",
+            "type": "GET",
+            "error": function () {
+                alert("服务器繁忙");
+            }
+        })
+    })
+
+    function showData(list) {
+        var title = "";
+        var href = "";
+        var time = "";
+        var lightIntensity = "";
+        var page;
+        var size = 6;
+        // alert(list.length)
+        // alert(list.data.rows[0].productName);
+        for (var i = 0; i < list.data.rows.length; i++) {
+            href = list.data.rows[i].newsHref;
+            title = list.data.rows[i].newsTitle;
+            time = list.data.rows[i].newsTime;
+
+            // alert(title)
+            // alert(template)
+            // alert(list.data.rows[i].productImg)
+            $("#news1").append("<a href=" + href + ">" + title + "</a>\n<br>")
+            $("#news2").append("<a href=" + href + ">" + title + "</a>\n<br>")
+            $("#news3").append("<a href=" + href + ">" + title + "</a>\n<br>")
+        }
+    }
+</script>
+
+<body>
+<!-- -----------------对整个网页进行描述(分为三层)------------------------ -->
+<div id="page">
+    <!-- ---------------对最上层进行描述，logo和功能选项------------------- -->
+    <div id="top">
+        <div id="top_left">
+            <img alt="沈阳农业大学" src="images/syaulg.png">
+        </div>
+        <div id="top_right">
+            <div align="center"><a href="/index">首页</a></div>
+            <div align="center"><a href="/place">基地介绍</a></div>
+            <div align="center"><a href="/product">果农产品</a></div>
+            <div align="center"><a href="/information">信息动态</a></div>
+            <div align="center" class="top_rightFifth"><a href="/aboutus">联系我们</a></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="main">
+        <div id="main_title" align="center">
+            <span>沈阳农业大学天柱山农产品基地</span>
+        </div>
+        <div id=main_image>
+            <!-- 图片布局开始 -->
+            <ul>
+                <li><img src="images/1.jfif"></li>
+                <li><img src="images/2.jpeg"></li>
+                <li><img src="images/3.jpeg"></li>
+                <li><img src="images/4.jpeg"></li>
+            </ul>
+            <!-- 图片布局结束 -->
+            <div class="imagetitle">
+                <span>沈阳农业大学农产品基地</span>
+            </div>
+            <div class="showNav">
+                <span class="active showNavSpan">1</span>
+                <span class="showNavSpan">2</span>
+                <span class="showNavSpan">3</span>
+                <span class="showNavSpan">4</span>
+            </div>
+            <!-- 布局按钮结束 -->
+        </div>
+        <div class="clear"></div>
+        <div id=textRoll>
+            <marquee class="textr1"><a href="#">沈阳农业大学天柱山智慧农业，农产品基地
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                温室大棚环境智能监控 ,环境数据检测</a></marquee>
+        </div>
+        <div class="clear"></div>
+        <div id="main_content">
+            <div id="content1">
+                <div id="title1">
+                    <span class="title1_span span1"><i class="catalog1"></i>新闻</span>
+                    <span class="title1_span span2"><i class="catalog1"></i>公告</span>
+                    <span class="title1_span span3"><i class="catalog1"></i>文件</span>
+                </div>
+                <div class="clear"></div>
+                <div id="news">
+                    <ul class="news1" id="news1">
+
+                    </ul>
+                    <ul class="news2" id="news2">
+
+                    </ul>
+                    <ul class="news3" id="news3">
+
+                    </ul>
+                </div>
+            </div>
+            <div id="content_place">
+                <!-- <ul>
+                    <li><a href="#">草莓基地</a></li>
+                    <li><a href="#">苹果基地</a></li>
+                    <li><a href="#">水稻基地</a></li>
+                    <li><a href="#">西红柿基地</a></li>
+                    <li><a href="#">山楂园基地</a></li>
+                </ul> -->
+                <div id="content_place_title" align="center">
+                    <span>农产品基地</span>
+                </div>
+                <div class="fur_place">
+                    <div class="furkimg">
+                        <img alt="水果基地" src="images/1.jfif">
+                    </div>
+                    <div class="furkintr">
+                        <span><a href="#">草莓基地</a></span><br/>
+                    </div>
+                </div>
+                <div class="fur_place">
+                    <div class="furkimg">
+                        <img alt="水果基地" src="images/1.jfif">
+                    </div>
+                    <div class="furkintr">
+                        <span><a href="#">苹果基地</a></span><br/>
+                    </div>
+                </div>
+                <div class="fur_place">
+                    <div class="furkimg">
+                        <img alt="水果基地" src="images/1.jfif">
+                    </div>
+                    <div class="furkintr">
+                        <span><a href="#">水稻基地</a></span><br/>
+                    </div>
+                </div>
+                <div class="fur_place">
+                    <div class="furkimg">
+                        <img alt="水果基地" src="images/1.jfif">
+                    </div>
+                    <div class="furkintr">
+                        <span><a href="#">树莓基地</a></span><br/>
+                    </div>
+                </div>
+                <div class="fur_place">
+                    <div class="furkimg">
+                        <img alt="水果基地" src="images/1.jfif">
+                    </div>
+                    <div class="furkintr">
+                        <span><a href="#">山楂基地</a></span><br/>
+                    </div>
+                </div>
+                <div class="fur_place">
+                    <div class="furkimg">
+                        <img alt="水果基地" src="images/1.jfif">
+                    </div>
+                    <div class="furkintr">
+                        <span><a href="#">西红柿基地</a></span><br/>
+                    </div>
+                </div>
+            </div>
+            <div id="content2">
+                <div id="title2" align="center">
+                    <span>实验项目</span>
+                </div>
+                <div id="items">
+                    <ul>
+                        <li>xxxxxx</li>
+                        <li>xxxxx</li>
+                        <li>xxxxxxx</li>
+                        <li>xxxxxxxxxx</li>
+                        <li>xxxxxxxxxx</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="bottom" align="center">
+        <span>版权所有：沈阳农业大学</span>
+    </div>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var slideShow = $("#main_image"),     //获取最外层框架的名称
+            ul = slideShow.find("ul"),
+            showNumber = slideShow.find(".showNav span"),//获取按钮
+            oneWidth = slideShow.find("ul li").eq(0).width();   //获取每个图片的宽度
+        var timer = null;   //定时器返回值，主要用于关闭定时器
+        var iNow = 0;      //iNow为正在展示的图片索引值，当用户打开网页时首先显示第一张图，即索引值为0
+
+        showNumber.on("click", function () {           //为每个按钮绑定一个点击事件
+            $(this).addClass("active").siblings().removeClass("active");   //按钮点击时为这个按钮添加高亮状态，并且将其他按钮高亮状态去掉
+            var index = $(this).index();  //获取哪个按钮被点击，也就是找到被点击按钮的索引值
+            iNow = index;
+            ul.animate({
+                "left": -oneWidth * iNow,   //注意此处用到left属性，所以ul的样式里面需要设置position: relative; 让ul左移N个图片大小的宽度，N根据被点击的按钮索引值iNOWx确定
+            })
+        });
+
+        timer = setInterval(function () {        //打开定时器
+            iNow++;                          //让图片的索引值次序加1，这样就可以实现顺序轮播图片
+            if (iNow > showNumber.length - 1) {    //当到达最后一张图的时候，让iNow赋值为第一张图的索引值，轮播效果跳转到第一张图重新开始
+                iNow = 0;
+            }
+            showNumber.eq(iNow).trigger("click");    //模拟触发数字按钮的click
+        }, 6000);   //5000为轮播的时间
+    });
+
+    var span1 = document.querySelector(".span1");
+    var span2 = document.querySelector(".span2");
+    var span3 = document.querySelector(".span3");
+    var news1 = document.querySelector(".news1");
+    var news2 = document.querySelector(".news2");
+    var news3 = document.querySelector(".news3");
+    span1.onclick = function () {
+        span1.style.backgroundColor = "#76B34B";
+        span2.style.backgroundColor = "#fff";
+        span3.style.backgroundColor = "#fff";
+        news1.style.display = "block";
+        news2.style.display = "none";
+        news3.style.display = "none";
+    }
+    span2.onclick = function () {
+        span2.style.backgroundColor = "#76B34B";
+        span1.style.backgroundColor = "#fff";
+        span3.style.backgroundColor = "#fff";
+        news2.style.display = "block";
+        news1.style.display = "none";
+        news3.style.display = "none";
+    }
+    span3.onclick = function () {
+        span3.style.backgroundColor = "#76B34B";
+        span2.style.backgroundColor = "#fff";
+        span1.style.backgroundColor = "#fff";
+        news3.style.display = "block";
+        news2.style.display = "none";
+        news1.style.display = "none";
+    }
+    span1.onmouseover = function () {
+        span1.style.backgroundColor = "#76B34B";
+        span2.style.backgroundColor = "#fff";
+        span3.style.backgroundColor = "#fff";
+        news1.style.display = "block";
+        news2.style.display = "none";
+        news3.style.display = "none";
+    }
+    span2.onmouseover = function () {
+        span2.style.backgroundColor = "#76B34B";
+        span1.style.backgroundColor = "#fff";
+        span3.style.backgroundColor = "#fff";
+        news2.style.display = "block";
+        news1.style.display = "none";
+        news3.style.display = "none";
+    }
+    span3.onmouseover = function () {
+        span3.style.backgroundColor = "#76B34B";
+        span2.style.backgroundColor = "#fff";
+        span1.style.backgroundColor = "#fff";
+        news3.style.display = "block";
+        news2.style.display = "none";
+        news1.style.display = "none";
+    }
+</script>
+</html>

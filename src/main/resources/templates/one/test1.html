@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试1</title>
+    <script src="webjars/jquery/3.3.1/jquery.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <script type="text/javascript">
+
+        $(function () {
+            // 1.路径
+            var url = "/product/productList/1/1";
+            // 2.请求参数
+            var param = "";
+            // load方法的使用
+            //默认是get请求
+            //如果传递里面有参数，则为post请求
+            //需要自己手动转化为json数据
+            /*  $(this).load(url,function (data) {
+                  alert(data);
+              })
+          })*/
+
+            //get请求
+            $.get(url, function (data) {
+                alert("为什么");
+                alert(data);
+            }, "json")
+
+            function creatXmlRequest() {
+                var httpXml;
+                //如果浏览器支持
+                if (window.XMLHttpRequest) {
+                    httpXml = new XMLHttpRequest();
+                }
+                else
+                    httpXml = new ActiveXObject("MicroSoft.XMLHTTP");
+                return httpXml;
+            }
+
+            function ajax() {
+
+            }
+
+            var div = document.createElement("div");
+            div.innerText = "123";
+            document.getElementsByTagName("body")[0].appendChild(div);
+        ));
+    </script>
+</head>
+<body>
+
+<input type="button" value="点击">
+</body>
+</html>

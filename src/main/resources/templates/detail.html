@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>农产品详情</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            // 1.路径
+            var url = "/search";
+            // 2.请求参数
+            var param = "";
+
+            //get请求
+            /*$.get(url,function (data) {
+                alert("get");
+                alert(data);
+                alert(data.getCode())
+            },"json")*/
+
+
+            //ajax
+            $.ajax({
+                "url": url,
+                "success": function (data) {
+                    showData(data);
+                    // alert("成功");
+                    // alert(data.code)
+                    $("#d1").val(data.data.rows)
+                },
+                "data": {
+                    "page": 1,
+                    "size": 18
+                },
+                "dataType": "json",
+                "type": "GET",
+                "error": function () {
+                    alert("服务器繁忙");
+                }
+            })
+        })
+
+        function showData(list) {
+            var productname = "";
+            var template = "";
+            var humidity = "";
+            var lightIntensity = "";
+            var page;
+            var size = 6;
+            var len = 0;
+
+            // alert(list.length)
+            // alert(list.data.rows[0].productName);
+            for (var i = 0; i < list.data.rows.length; i++) {
+                // str = "<tr><td>"+list.data.rows[i].productName+"</td><td>"+list.data.rows[i].productPrice+"</td></tr>";
+                productname = list.data.rows[i].productName;
+                // alert(productname)
+                template = list.data.rows[i].portData.temperature;
+                humidity = list.data.rows[i].portData.humidity;
+                lightIntensity = list.data.rows[i].portData.lightIntensity;
+                page = list.data.total / size;
+
+
+
+            }
+        }
+
+    </script>
+
+</head>
+<style>
+    .clear{
+        clear: both;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #page{
+        background-color: #ECF5EF;
+        height: auto;
+        width: 100%;
+    }
+    #top{
+        width:100%;
+        height:auto;
+    }
+    #top_left{
+        width: 17%;
+        float: left;
+    }
+    #top_left img{
+        width: 265px;
+        height: 50px;
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+    #top_right{
+        float: left;
+        margin-left: 850px;
+        margin-top: 40px;
+    }
+    #top_right span{
+        border:1px solid gray;
+        width: 50px;
+        height: 23px;
+        border-radius:5px;
+        background-color: #DDDDDD;
+    }
+    #top_right a{
+        text-decoration: none;
+        font-size: 15px;
+        color: black;
+        padding-bottom: 2px;
+    }
+    #mytitle{
+        width:100%;
+        height:auto;
+        margin-bottom: 20px;
+    }
+    #mytitle span{
+
+        font-size: 35px;
+        font-weight: ;
+        margin-top:10px;
+        text-shadow: 2px 2px 2px gray;
+    }
+    #main{
+        width: 100%;
+        height: auto;
+    }
+    .main_body{
+        width: 70%;
+        height: auto;
+        border: 1px solid green;
+        margin: 20px auto 20px;
+        border-radius:7px;
+        background-color: white;
+    }
+    .block{
+        margin-top: 50px;
+        margin-left: 100px;
+    }
+    .main_img{
+        width: 350px;
+        height: 250px;
+        border: 3px solid #ECF5EF;
+        border-radius:7px;
+        float: left;
+    }
+    .main_img img{
+        width: 350px;
+        height: 250px;
+        border-radius:7px;
+    }
+    .main_some{
+        float: left;
+        margin-left: 50px;
+    }
+    .main_some span{
+        font-weight: bold;
+        font-family: cursive;
+        font-size: 20px;
+        color:
+    }
+    .some_name{
+        margin-top: 60px;
+    }
+    .some_state{
+        margin-top: 10px;
+    }
+    .some_sore{
+        margin-top: 10px;
+    }
+    .some_num{
+        margin-top: 10px;
+    }
+    .some_mon{
+        margin-top: 10px;
+    }
+    .main_con{
+        margin-top: 30px;
+        margin-left: px;
+        font-family: cursive;
+        font-size: 20px;
+    }
+    .main_con ul{
+        list-style:circle;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    .main_con span{
+        font-size: 23px;
+        display: block;
+        margin-top: 10px;
+
+    }
+    .mytitle{
+        margin-left: 300px;
+    }
+    .last{
+        position: relative;
+        left: -50px;
+        display: block;
+    }
+    #bottom{
+        width: 100%;
+        height: 25px;
+        background-color: #8Cc480;
+        padding-top: 5px;
+    }
+</style>
+
+<body>
+<div id="page">
+    <div id="top">
+        <div id="top_left">
+            <img alt="" src="images/syaulg.png">
+        </div>
+        <div id="top_right">
+            <span><a href="product.html">| 返回  |</a></span>
+        </div>
+        <div class="clear"></div>
+        <div id="mytitle" align="center">
+            <span>农产品详情</span>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="main">
+        <div class="main_body">
+            <div class="block">
+                <div class="main_img">
+                    <img alt="苹果" src="images/stra.jpg">
+                </div>
+                <div class="main_some">
+                    <div class="some_name">
+                        <span>农产品名称：</span>
+                        <span>艳丽草莓</span>
+                    </div>
+                    <div class="some_state">
+                        <span>农产品状态：</span>
+                        <span>正在生长中</span>
+                    </div>
+                    <div class="some_sore">
+                        <span>农产品分类：</span>
+                        <span>水果</span>
+                    </div>
+                    <div class="some_num">
+                        <span>农产品数量：</span>
+                        <span>--暂无--</span>
+                    </div>
+                    <div class="some_mon">
+                        <span>农产品价格：</span>
+                        <span>--暂无--</span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="main_con">
+                    <span class="mytitle">品种发展</span>
+                    <ul>
+                        <li>空气温度：白昼温度较高，光合作用旺盛，同化物积累较多；夜间温度较低，减少呼吸消耗。</li>
+                        <li>空气湿度：喜干燥要求年降水量500＿800mm，湿度70 以下。</li>
+                        <li>光照强度：日照时数在2000小时以上，提高果实的品质,满足草莓生长发育的需要。</li>
+                    </ul>
+                    <span class="last">&nbsp;&nbsp;&nbsp;&nbsp;沈阳农业大学重点开展综合日本品种和欧美品种优点的草莓新品种的选育研究。
+					2009 年以从美国引进的草莓资源‘08-A-01’为母本，
+					以日本草莓品种‘栃乙女’为父本进行杂交，当年获得杂交种子 450 余粒。
+					2014 年 3 月通过辽宁省非主要农作物 品种备案委员会备案，定名为‘艳丽’。
+					</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom" align="center">
+        <span>版权所有：沈阳农业大学</span>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>信息动态</title>
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<style>
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	.clear{clear: both;}
+	 #page{
+    	background-color: #76B34B;/*-------------------整体的背景颜色  */
+    	height: 100%;
+    }
+	#top{
+		width:100%;
+		height:70px;
+	}
+	#top_left{
+		width: 17%;
+		float: left;
+	}
+	#top_left img{
+		width: 265px;
+		height: 50px;
+		margin-left: 30px;
+		margin-top: 20px;
+	}
+	#top_right{
+		width: 900px;
+		float: right;
+		margin-left: 100px;
+		margin-top: 30px;
+	}
+	#top_right div{
+		float: left;
+		width: 100px;
+		height: 26px;
+		border: 0.5px solid #3AD56F;
+		padding-top: 5px;
+		margin-right: 17px;
+		border-radius:20px;
+		/* font-family: cursive;*/
+		font-size: 15px;
+		/* font-weight: bold; */
+		
+	}
+	.top_rightFourth{
+		background-color: #139D5A;
+	}
+	#top_right div:hover{
+		cursor: pointer;
+		background-color: #139D5A;
+	}
+	#top_right a{
+		text-decoration: none;
+		color: white;
+	}
+	#main{
+		width: 100%;
+		height: auto;
+	}
+	#main_title{
+		width: 100%;
+		height: 45px;
+		margin: 40px auto 0px;
+		text-shadow: 5px 5px 5px gray;
+	}
+	#main_title span{
+		font-size: 26px;
+		color: white;
+	}
+	#main_news{
+		width: 100%;
+		height: auto;
+		padding-top: 10px;
+	}
+	.mynew1{
+		width: 90%;
+		height: auto;
+		margin: 0px auto 0px;
+		border: 0px solid;
+	}
+	.myblock{
+		width: 30%;
+		height: auto;
+		border: 0px solid white;
+		background-color: white;
+		float: left;
+		margin-left: 32px;
+		margin-top: 40px;
+		border-radius:7px;
+	}
+	.newimg{
+		width: 100%;
+		height: 250px;
+		border: 0px solid white;
+	}
+	.newimg img{
+		width: 100%;
+		height: 250px;
+		border-radius:7px;
+	}
+	.newcon{
+		width: 100%;
+		background-color: white;
+		opacity:0.5;
+	}
+	.newdate1{
+		padding-left: 30px;
+		/* opacity:0.5; */
+	}
+	.newdate2{
+		padding-top: 5px;
+		padding-left: 30px;
+		font-size: 17px;
+		font-weight:bold;
+		/* opacity:0.5; */
+	}
+	.newshr{
+		margin-left: 20px;
+		background-color: black;
+		width: 87%;
+		margin-top: 4px;
+		/* opacity:0.5; */
+	}
+	.newshr hr{
+		height: 2px;
+	}
+	.newcontent{
+		width: 100px;
+		padding-left: 20px;
+		margin-top: 3px;
+		padding-bottom: 2px;
+		/* opacity:0.5; */
+	}
+	.newcontent a{
+		text-decoration: none;
+		font-size: 18px;
+		color: black;
+	}
+	.newcon:hover{
+		cursor: pointer;
+	}
+	.newimg:hover{
+		cursor: pointer;
+	}
+	.mynew2{
+		display: none;
+		width: 90%;
+		height: auto;
+		margin: 0px auto 0px;
+		border: 0px solid;
+	}
+	.sign{
+		width: 80%;
+		height: auto;
+		margin:10px auto 0px;
+		padding-top: 20px;
+	}
+	.sign1{
+		height: 5px;
+		width: 60px;
+		border: 1px solid olive;
+		border-radius:7px;
+		background-color: green;
+		float: left;
+		margin-left: 480px;
+	}
+	.sign2{
+		height: 5px;
+		width: 60px;
+		border: 1px solid olive;
+		border-radius:7px;
+		background-color: rgba(255,255,255,0.1);
+		float: left;
+		margin-left: 10px;
+	}
+	.image_buttom{
+		width: 100%;
+		height: auto;
+		margin-top:15px;
+	}
+	.bu1{
+		border: 1px solid olive;
+		width: 19px;
+		height: 19px;
+		float: left;
+		background-color: green;
+		margin-left: 657px;
+	}
+	.bu2{
+		border: 1px solid olive;
+		width: 19px;
+		height: 19px;
+		float: left;
+		margin-left: 8px;
+		background-color:rgba(255,255,255,0.1);
+	}
+	.bu1,.bu2:hover{
+		cursor: pointer;
+	}
+	#bottom{
+		width: 100%;
+		height: 25px;
+		background-color: #8Cc480;
+		padding-top: 5px;
+		margin-top: 10px;
+	}
+</style>
+<body>
+	<div id="page">
+		<div id="top">
+			<div id="top_left">
+				<img alt="沈阳农业大学" src="images/syaulg.png">
+			</div>
+			<div id="top_right">
+				<div align="center"><a href="/index">首页</a></div>
+				<div align="center"><a href="/place">基地介绍</a></div>
+				<div align="center"><a href="/product">果农产品</a></div>
+				<div align="center"><a href="/information">信息动态</a></div>
+				<div align="center" class="top_rightFifth"><a href="/aboutus">联系我们</a></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div id="main">
+			<div id="main_title" align="center">
+				<span>果农产品最新动态</span>
+			</div>
+			<div id="main_news">
+				<div class="mynew1">
+					<div class="myblock">
+						<div class="newimg">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+<!------------------------------------1-------------------------------------------- -->
+					<div class="myblock">
+						<div class="newimg newimg1">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon newcon1">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+<!-- -----------------------------2---------------------------------------------------->
+					<div class="myblock">
+						<div class="newimg newimg2">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon newcon2">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+<!-- ---------------------------------------3-------------------------------------->
+					<div class="myblock">
+						<div class="newimg newimg3">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon newcon3">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+<!-- -----------------------------4--------------------------------------- -->
+					<div class="myblock">
+						<div class="newimg newimg4">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon newcon4">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+					<!-- -------------------------5----------------------- -->
+					<div class="myblock">
+						<div class="newimg newimg5">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon newcon5">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+				<div class="mynew2">
+					<div class="myblock">
+						<div class="newimg newimg6">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon newcon6">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+					<!-- -------------------------------7---------------------- -->
+					<div class="myblock">
+						<div class="newimg newimg7">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon newcon7">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+					<!-- -----------------------------------8--------------- -->
+					<div class="myblock">
+						<div class="newimg newimg8">
+							<img alt="信息" src="images/4.jpeg">
+						</div>
+						<div class="newcon newcon8">
+							<div class="newdate1">
+								<h1>11</h1>
+							</div>
+							<div class="newdate2">
+								<span>2019/3</span>
+							</div>
+							<div class="newshr">
+								<hr></hr>
+							</div>
+							<div class="newcontent">
+								<span><a href="#">xxxxxxxxxxxxxxxxxxxxxxxxx</a></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="sign">
+					<div class="sign1"></div>
+					<div class="sign2"></div>
+				</div>	
+				<div class="clear"></div>
+				<div class="image_buttom">
+					<div class="bu1" align="center"><span>1</span></div>
+					<div class="bu2" align="center"><span>2</span></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="bottom" align="center">
+			<span>版权所有：沈阳农业大学</span>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var newimg=document.querySelector(".newimg");
+	var newcon=document.querySelector(".newcon");
+	
+	var newimg1=document.querySelector(".newimg1");
+	var newcon1=document.querySelector(".newcon1");
+	
+	var newimg2=document.querySelector(".newimg2");
+	var newcon2=document.querySelector(".newcon2");
+	
+	var newimg3=document.querySelector(".newimg3");
+	var newcon3=document.querySelector(".newcon3");
+	
+	var newimg4=document.querySelector(".newimg4");
+	var newcon4=document.querySelector(".newcon4");
+	
+	var newimg5=document.querySelector(".newimg5");
+	var newcon5=document.querySelector(".newcon5");
+	
+	var newimg6=document.querySelector(".newimg6");
+	var newcon6=document.querySelector(".newcon6");
+	
+	var newimg7=document.querySelector(".newimg7");
+	var newcon7=document.querySelector(".newcon7");
+	
+	var newimg8=document.querySelector(".newimg8");
+	var newcon8=document.querySelector(".newcon8");
+	
+	
+	
+	newimg.onmouseover=function(){
+		newimg.style.opacity="0.5";
+		newcon.style.opacity="1";
+	}
+	newimg.onmouseout=function(){
+		newimg.style.opacity="1";
+		newcon.style.opacity="0.5";
+	}
+	newcon.onmouseover=function(){
+		newcon.style.opacity="1";
+	}
+	newcon.onmouseout=function(){
+		newcon.style.opacity="0.5";
+	}
+	
+	newimg1.onmouseover=function(){
+		newimg1.style.opacity="0.5";
+		newcon1.style.opacity="1";
+	}
+	newimg1.onmouseout=function(){
+		newimg1.style.opacity="1";
+		newcon1.style.opacity="0.5";
+	}
+	newcon1.onmouseover=function(){
+		newcon1.style.opacity="1";
+	}
+	newcon1.onmouseout=function(){
+		newcon1.style.opacity="0.5";
+	}
+	
+	newimg2.onmouseover=function(){
+		newimg2.style.opacity="0.5";
+		newcon2.style.opacity="1";
+	}
+	newimg2.onmouseout=function(){
+		newimg2.style.opacity="1";
+		newcon2.style.opacity="0.5";
+	}
+	newcon2.onmouseover=function(){
+		newcon2.style.opacity="1";
+	}
+	newcon2.onmouseout=function(){
+		newcon2.style.opacity="0.5";
+	}
+	
+	newimg3.onmouseover=function(){
+		newimg3.style.opacity="0.5";
+		newcon3.style.opacity="1";
+	}
+	newimg3.onmouseout=function(){
+		newimg3.style.opacity="1";
+		newcon3.style.opacity="0.5";
+	}
+	newcon3.onmouseover=function(){
+		newcon3.style.opacity="1";
+	}
+	newcon3.onmouseout=function(){
+		newcon3.style.opacity="0.5";
+	}
+	
+	newimg4.onmouseover=function(){
+		newimg4.style.opacity="0.5";
+		newcon4.style.opacity="1";
+	}
+	newimg4.onmouseout=function(){
+		newimg4.style.opacity="1";
+		newcon4.style.opacity="0.5";
+	}
+	newcon4.onmouseover=function(){
+		newcon4.style.opacity="1";
+	}
+	newcon4.onmouseout=function(){
+		newcon4.style.opacity="0.5";
+	}
+	
+	newimg5.onmouseover=function(){
+		newimg5.style.opacity="0.5";
+		newcon5.style.opacity="1";
+	}
+	newimg5.onmouseout=function(){
+		newimg5.style.opacity="1";
+		newcon5.style.opacity="0.5";
+	}
+	newcon5.onmouseover=function(){
+		newcon5.style.opacity="1";
+	}
+	newcon5.onmouseout=function(){
+		newcon.style.opacity="0.5";
+	}
+	
+	newimg6.onmouseover=function(){
+		newimg6.style.opacity="0.5";
+		newcon6.style.opacity="1";
+	}
+	newimg6.onmouseout=function(){
+		newimg6.style.opacity="1";
+		newcon6.style.opacity="0.5";
+	}
+	newcon6.onmouseover=function(){
+		newcon6.style.opacity="1";
+	}
+	newcon6.onmouseout=function(){
+		newcon6.style.opacity="0.5";
+	}
+	
+	newimg7.onmouseover=function(){
+		newimg7.style.opacity="0.5";
+		newcon7.style.opacity="1";
+	}
+	newimg7.onmouseout=function(){
+		newimg7.style.opacity="1";
+		newcon7.style.opacity="0.5";
+	}
+	newcon7.onmouseover=function(){
+		newcon7.style.opacity="1";
+	}
+	newcon7.onmouseout=function(){
+		newcon7.style.opacity="0.5";
+	}
+	
+	newimg8.onmouseover=function(){
+		newimg8.style.opacity="0.5";
+		newcon8.style.opacity="1";
+	}
+	newimg8.onmouseout=function(){
+		newimg8.style.opacity="1";
+		newcon8.style.opacity="0.5";
+	}
+	newcon8.onmouseover=function(){
+		newcon8.style.opacity="1";
+	}
+	newcon8.onmouseout=function(){
+		newcon8s.style.opacity="0.5";
+	}
+	
+	
+	
+	var sign1=document.querySelector(".sign1");
+	var sign2=document.querySelector(".sign2");
+	var mynew1=document.querySelector(".mynew1");
+	var mynew2=document.querySelector(".mynew2");
+	var bu1=document.querySelector(".bu1");
+	var bu2=document.querySelector(".bu2");
+	bu1.onclick=function(){
+		mynew1.style.display="block";
+		mynew2.style.display="none";
+		sign1.style.backgroundColor="green";
+		sign2.style.backgroundColor="rgba(255,255,255,0.1)";
+		bu1.style.backgroundColor="green";
+		bu2.style.backgroundColor="rgba(255,255,255,0.1)";
+	}
+	bu2.onclick=function(){
+		mynew2.style.display="block";
+		mynew1.style.display="none";
+		sign2.style.backgroundColor="green";
+		sign1.style.backgroundColor="rgba(255,255,255,0.1)";
+		bu2.style.backgroundColor="green";
+		bu1.style.backgroundColor="rgba(255,255,255,0.1)";
+	}
+</script>
+</html>

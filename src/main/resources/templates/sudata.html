@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>环境数据检测</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script src="webjars/jquery/3.3.1/jquery.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">function excel() {
+        window.location.href="portExcel.action"
+    }
+
+    $(function () {
+            // 1.路径
+            var url = "/port/list";
+            // 2.请求参数
+            var param = ""
+
+            //ajax
+            $.ajax({
+                "url": url,
+                "success": function (data) {
+                    showData(data);
+                    // alert("成功");
+                    // alert(data.code)
+                    $("#d1").val(data.data.rows)
+                },
+                "dataType": "json",
+                "type": "GET",
+                "error": function () {
+                    alert("服务器繁忙");
+                }
+            })
+        })
+
+        function showData(list) {
+            var productname;
+            var template;
+            var humidity;
+            var lightIntensity;
+            var page;
+            var size = 6;
+            var len = 0;
+            var time;
+            // alert(list.length)
+            // alert(list.data.rows[0].productName);
+            // alert("len"+list.data.length)
+            for (var i = 0; i < list.data.length; i++) {
+                // str = "<tr><td>"+list.data.rows[i].productName+"</td><td>"+list.data.rows[i].productPrice+"</td></tr>";
+                // alert(productname)
+
+                time = list.data[i].createTime;
+                var _time = new Date(time);
+                var year = _time.getFullYear();
+                var month = _time.getMonth();
+                var day =_time.getDay();
+                var hours = _time.getHours();
+                var min = _time.getMinutes();
+                var second  =_time.getSeconds();
+
+                time = year+"年"+month+"月"+day+"日   "+hours+":"+min+":"+second;
+                template = list.data[i].temperature;
+                humidity = list.data[i].humidity;
+                lightIntensity = list.data[i].lightIntensity;
+
+                $("#portlist").append("<tr>\n" +
+                    "                                <td>"+time+"</td>\n" +
+                    "                                <td>"+template+"</td>\n" +
+                    "                                <td>"+humidity+"</td>\n" +
+                    "                                <td>"+lightIntensity+"</td>\n" +
+                    "                            </tr>")
+
+
+
+            }
+
+
+            /*var currentpage = 1;
+            var total = list.data.total;
+
+            if (currentpage == 1){
+                // $("#nextpage").append("<a href=\"/product/productList?page="+(currentpage+1)+
+                //     "&size=6\">下一页</a>\n")
+                $("#nextpage").append("<a href=\"product\">下一页</a>\n")
+                currentpage = currentpage+1;
+            }
+            if (currentpage > 1&&total>6) {
+                $("#uppage").append("<a href=\"/product/productList?page="+(currentpage-1)+
+                "&size=6\">上一页</a>\n"
+            )
+
+                $("#nextpage").append("<a href=\"/product/productList?page="+(currentpage+1)+
+                    "&size=6\">下一页</a>\n")
+            }*/
+
+        }
+
+        var syimage = document.querySelector(".syimage");
+        var syimage_title = document.querySelector(".syimage_title");
+        var symage_img = document.querySelector(".symage_img");
+
+        var syimage1 = document.querySelector(".syimage1");
+        var syimage_title1 = document.querySelector(".syimage_title1");
+        var symage_img1 = document.querySelector(".symage_img1");
+
+        var syimage2 = document.querySelector(".syimage2");
+        var syimage_title2 = document.querySelector(".syimage_title2");
+        var symage_img2 = document.querySelector(".symage_img2");
+
+
+        var syimage3 = document.querySelector(".syimage3");
+        var syimage_title3 = document.querySelector(".syimage_title3");
+        var symage_img3 = document.querySelector(".symage_img3");
+
+
+        var syimage4 = document.querySelector(".syimage4");
+        var syimage_title4 = document.querySelector(".syimage_title4");
+        var symage_img4 = document.querySelector(".symage_img4");
+
+
+        var syimage5 = document.querySelector(".syimage5");
+        var syimage_title5 = document.querySelector(".syimage_title5");
+        var symage_img5 = document.querySelector(".symage_img5");
+
+
+        var syimage6 = document.querySelector(".syimage6");
+        var syimage_title6 = document.querySelector(".syimage_title6");
+        var symage_img6 = document.querySelector(".symage_img6");
+
+
+        var syimage7 = document.querySelector(".syimage7");
+        var syimage_title7 = document.querySelector(".syimage_title7");
+        var symage_img7 = document.querySelector(".symage_img7");
+
+
+        var syimage8 = document.querySelector(".syimage8");
+        var syimage_title8 = document.querySelector(".syimage_title8");
+        var symage_img8 = document.querySelector(".symage_img8");
+
+
+        syimage.onmouseover = function () {
+            syimage_title.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img.style.opacity = "0.6";
+            syimage.style.borderColor = "green";
+        }
+        syimage.onmouseout = function () {
+            syimage_title.style.display = "none";
+            syimage.style.borderColor = "white";
+            symage_img.style.opacity = "1";
+            alert("移出")
+        }
+
+        syimage1.onmouseover = function () {
+            syimage_title1.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img1.style.opacity = "0.6";
+            syimage1.style.borderColor = "green";
+        }
+        syimage1.onmouseout = function () {
+            syimage_title1.style.display = "none";
+            syimage1.style.borderColor = "white";
+            symage_img1.style.opacity = "1";
+        }
+
+        syimage2.onmouseover = function () {
+            syimage_title2.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img2.style.opacity = "0.6";
+            syimage2.style.borderColor = "green";
+        }
+        syimage2.onmouseout = function () {
+            syimage_title2.style.display = "none";
+            syimage2.style.borderColor = "white";
+            symage_img2.style.opacity = "1";
+        }
+
+        syimage3.onmouseover = function () {
+            syimage_title3.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img3.style.opacity = "0.6";
+            syimage3.style.borderColor = "green";
+        }
+        syimage3.onmouseout = function () {
+            syimage_title3.style.display = "none";
+            syimage3.style.borderColor = "white";
+            symage_img3.style.opacity = "1";
+        }
+
+        syimage4.onmouseover = function () {
+            syimage_title4.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img4.style.opacity = "0.6";
+            syimage4.style.borderColor = "green";
+        }
+        syimage4.onmouseout = function () {
+            syimage_title4.style.display = "none";
+            syimage4.style.borderColor = "white";
+            symage_img4.style.opacity = "1";
+        }
+
+        syimage5.onmouseover = function () {
+            syimage_title5.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img5.style.opacity = "0.6";
+            syimage5.style.borderColor = "green";
+        }
+        syimage5.onmouseout = function () {
+            syimage_title5.style.display = "none";
+            syimage5.style.borderColor = "white";
+            symage_img5.style.opacity = "1";
+        }
+
+        syimage6.onmouseover = function () {
+            syimage_title6.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img6.style.opacity = "0.6";
+            syimage6.style.borderColor = "green";
+        }
+        syimage6.onmouseout = function () {
+            syimage_title6.style.display = "none";
+            syimage6.style.borderColor = "white";
+            symage_img6.style.opacity = "1";
+        }
+
+        syimage8.onmouseover = function () {
+            syimage_title8.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img8.style.opacity = "0.6";
+            syimage8.style.borderColor = "green";
+        }
+        syimage8.onmouseout = function () {
+            syimage_title8.style.display = "none";
+            syimage8.style.borderColor = "white";
+            symage_img8.style.opacity = "1";
+        }
+
+        syimage7.onmouseover = function () {
+            syimage_title7.style.display = "block";
+            /* syinform.style.borderColor="green"; */
+            symage_img7.style.opacity = "0.6";
+            syimage7.style.borderColor = "green";
+        }
+        syimage7.onmouseout = function () {
+            syimage_title7.style.display = "none";
+            syimage7.style.borderColor = "white";
+            symage_img7.style.opacity = "1";
+        }
+
+        var sign1 = document.querySelector(".sign1");
+        var sign2 = document.querySelector(".sign2");
+        var myimage1 = document.querySelector(".myimage1");
+        var myimage2 = document.querySelector(".myimage2");
+        var bu1 = document.querySelector(".bu1");
+        var bu2 = document.querySelector(".bu2");
+        bu1.onclick = function () {
+            myimage1.style.display = "block";
+            myimage2.style.display = "none";
+            sign1.style.backgroundColor = "green";
+            sign2.style.backgroundColor = "rgba(255,255,255,0.1)";
+            bu1.style.backgroundColor = "green";
+            bu2.style.backgroundColor = "rgba(255,255,255,0.1)";
+        }
+        bu2.onclick = function () {
+            myimage2.style.display = "block";
+            myimage1.style.display = "none";
+            sign2.style.backgroundColor = "green";
+            sign1.style.backgroundColor = "rgba(255,255,255,0.1)";
+            bu2.style.backgroundColor = "green";
+            bu1.style.backgroundColor = "rgba(255,255,255,0.1)";
+        }
+
+        $("#button1").click(function () {
+            alert('bu2');
+            myimage2.style.display = 'block';
+            myimage1.style.display = 'none';
+            sign2.style.backgroundColor = 'green';
+            sign1.style.backgroundColor = 'rgba(255,255,255,0.1)';
+            bu2.style.backgroundColor = 'green';
+            bu1.style.backgroundColor = 'rgba(255,255,255,0.1)';
+
+        })
+    </script>
+
+</head>
+<style>
+    .clear {
+        clear: both;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #page {
+        background-color: #ECF5EF;
+        height: auto;
+        width: 100%;
+    }
+
+    #top {
+        width: 100%;
+        height: auto;
+    }
+
+    #top_left {
+        width: 17%;
+        float: left;
+    }
+
+    #top_left img {
+        width: 265px;
+        height: 50px;
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+
+    #top_right {
+        float: left;
+        margin-left: 850px;
+        margin-top: 40px;
+    }
+
+    #top_right span {
+        border: 1px solid gray;
+        width: 50px;
+        height: 23px;
+        border-radius: 5px;
+        background-color: #DDDDDD;
+    }
+
+    #top_right a {
+        text-decoration: none;
+        font-size: 15px;
+        color: black;
+        padding-bottom: 2px;
+    }
+
+    #mytitle {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    #mytitle span {
+
+        font-size: 35px;
+        font-weight: ;
+        margin-top: 10px;
+        text-shadow: 2px 2px 2px gray;
+    }
+
+    /*******************************************************/
+
+    .room-select {
+        font-size: 14px;
+        font-weight: lighter;
+        margin-right: 20px;
+        width: 200px;
+        height: 30px;
+        border-radius: 9px;
+        cursor: pointer;
+    }
+
+    .operation label {
+        padding-left: 30px;
+    }
+
+    #analysistabletitle {
+        width: 950px;
+        height: auto;
+        margin: 20px auto 0px;
+        border: 0.5px solid #C5C5C5;
+    }
+
+    #analysistabletitle th {
+        border: 0.5px solid #C5C5C5;
+        background-color: #EAEAEA;
+        width: 237px;
+        height: 25px;
+        font-weight: lighter;
+        padding-left: 80px;
+    }
+
+    #analysistable {
+        width: 950px;
+        height: 350px;
+        overflow: scroll;
+        margin: 0px auto 5px;
+        border: 0.5px solid #C5C5C5;
+    }
+
+    #analysistable td {
+        border: 0.5px solid #C5C5C5;
+        background-color: ;
+        width: 237px;
+        height: 25px;
+        font-weight: lighter;
+        padding-left: 80px;
+    }
+
+    #historydata {
+        overflow: auto;
+        width: 100%;
+        height: auto;
+        background-color: #ECF5EF;
+    }
+
+    #historybox {
+        width: 1100px;
+        margin: 2px auto 2px;
+        border: 0.5px solid blue;
+        height: auto;
+        border-radius: 9px;
+        background-color: #fff;
+    }
+
+    #historybody {
+        width: 1000px;
+        margin: 20px auto 10px;
+        border: 5px solid #D3E3F0;
+        height: auto;
+    }
+
+    #historytitle {
+        float: left;
+        background-color: #EBF7FF;
+        width: 100%;
+        height: 35px;
+        font-weight: bold;
+        font-family: cursive;
+        font-size: 20px;
+        padding-top: 5px;
+    }
+
+    #historytitle img {
+        margin-left: 40px;
+    }
+
+    #historytitle span {
+        margin-top: 10px;
+    }
+
+    #myhistorytop {
+        width: 950px;
+        border: 1px solid #CECECE;
+        margin: 50px auto 0px;
+        background-color: #F9F9F9;
+        border-radius: 9px;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: lighter;
+        height: auto;
+    }
+
+    .download-btn {
+        width: 70px;
+        padding-left: 30px;
+        height: 24px;
+        line-height: 24px;
+        color: #426da0;
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 20px;
+        background: url("images/download.gif");
+        margin-left: 10px;
+    }
+
+    #bottom {
+        width: 100%;
+        height: 25px;
+        background-color: #8Cc480;
+        padding-top: 5px;
+        margin-top: 5px;
+        font-size: 16px;
+    }
+</style>
+<body>
+<div id="page">
+    <div id="top">
+        <div id="top_left">
+            <img alt="" src="images/syaulg.png">
+        </div>
+        <div id="top_right">
+            <span><a href="index">| 返   回 |</a></span>
+        </div>
+        <div class="clear"></div>
+        <div id="mytitle" align="center">
+            <span>环境数据信息</span>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="main">
+        <div id="historydata">
+            <div id="historybox">
+                <div id="historybody">
+                    <div id="historytitle">
+                        <img alt="" src="images/title.png">
+                        <span>历史数据</span>
+                    </div>
+                    <div id="myhistorytop">
+                        <form action="#" method="post">
+                            <div class="operation">
+                                <label>选择设备：</label>
+                                <select class="room-select">
+                                    <option selected="selected">草莓温室1</option>
+                                    <option>水稻温室1</option>
+                                    <option>白菜温室1</option>
+                                </select>
+                                <span class="download-btn" onclick="excel()">下 载</span>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="analysistabletitle">
+                        <table>
+                            <tr>
+                                <th>接收时间</th>
+                                <th>空气温度</th>
+                                <th>空气湿度</th>
+                                <th>光照强度</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="analysistable">
+                        <table id="portlist">
+                            <!--<tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>2016-05-09 00:00</td>
+                                <td>18.65</td>
+                                <td>65</td>
+                                <td>0.7</td>
+                            </tr>-->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom" align="center">
+        <span>版权所有：沈阳农业大学</span>
+    </div>
+</div>
+</body>
+</html>

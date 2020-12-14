@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>果农产品</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="webjars/jquery/3.3.1/jquery.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            // 1.路径
+            var url = "/product/productList";
+            // 2.请求参数
+            var param = "";
+
+            //get请求
+            /*$.get(url,function (data) {
+                alert("get");
+                alert(data);
+                alert(data.getCode())
+            },"json")*/
+
+
+            //ajax
+            $.ajax({
+                "url": url,
+                "success": function (data) {
+                    showData(data);
+                    // alert("成功");
+                    // alert(data.code)
+                    $("#d1").val(data.data.rows)
+                },
+                "data": {
+                    "page": 1,
+                    "size": 18
+                },
+                "dataType": "json",
+                "type": "GET",
+                "error": function () {
+                    alert("服务器繁忙");
+                }
+            })
+        })
+
+        function showData(list) {
+            var productname = "";
+            var template = "";
+            var humidity = "";
+            var lightIntensity = "";
+            var page;
+            var size = 6;
+            var len = 0;
+
+            // alert(list.length)
+            // alert(list.data.rows[0].productName);
+            for (var i = 0; i < list.data.rows.length; i++) {
+                // str = "<tr><td>"+list.data.rows[i].productName+"</td><td>"+list.data.rows[i].productPrice+"</td></tr>";
+                productname = list.data.rows[i].productName;
+                // alert(productname)
+                template = list.data.rows[i].portData.temperature;
+                humidity = list.data.rows[i].portData.humidity;
+                lightIntensity = list.data.rows[i].portData.lightIntensity;
+                page = list.data.total / size;
+
+                // alert(template)
+                // alert(list.data.rows[i].productImg)
+                if (len != list.data.rows.length) {
+                    // alert(len);
+                    if (len == 0) {
+                        $("#products").append("<div class=\"mybolck\">" +
+                            "            <div class=\"syimage\">\n" +
+                            "                <img class=\"symage_img\" alt=\"苹果\" src=" + list.data.rows[i].productImg + ">\n" +
+                            "                <i class=\"syimage_title\"><a href=\"#\">---农产品溯源---</a></i>\n" +
+                            "            </div><div class=\"syinform\" id=\"productlist\">\n" +
+                            "                <div class=\"introduce\">\n" +
+                            "                    <span>产品介绍：</span>\n" +
+                            "                            <span><a href=\"#\">"+productname+"（详细信息）</a></span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"temperature\">\n" +
+                            "                    <span class=\"tem\">温度(℃)：</span>" +
+                            "                    <span class=\"numtem\">" + template + "</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"sunlight\">\n" +
+                            "                    <span>光照强度：</span>\n" +
+                            "                    <span>" + lightIntensity + "</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"clear\"></div>\n" +
+                            "                <div class=\"water\">\n" +
+                            "                    <span>空气湿度：</span>\n" +
+                            "                    <span>" + humidity + "</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"pesticide\">\n" +
+                            "                    <span><a href=\"#\">农药使用情况</a></span>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"clear\"></div>\n" +
+                            "        </div>\n" +
+                            "            </div>")
+                        len += 1;
+                        // alert();
+                    }
+                   else if (len>=3){
+                        $("#products2").append("<div class=\"mybolck\">" +
+                            "            <div class=\"syimage\">\n" +
+                            "                <img class=\"symage_img\" alt=\"苹果\" src=" + list.data.rows[i].productImg + ">\n" +
+                            "                <i class=\"syimage_title\"><a href=\"#\">---农产品溯源---</a></i>\n" +
+                            "            </div><div class=\"syinform\" id=\"productlist\">\n" +
+                            "                <div class=\"introduce\">\n" +
+                            "                    <span>产品介绍：</span>\n" +
+                            "                            <span><a href=\"search/?productName="+productname+"\">"+productname+"（详细信息）</a></span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"temperature\">\n" +
+                            "                    <span class=\"tem\">温度(℃)：</span>" +
+                            "                    <span class=\"numtem\">" + template + "</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"sunlight\">\n" +
+                            "                    <span>光照强度：</span>\n" +
+                            "                    <span>" + lightIntensity + "</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"clear\"></div>\n" +
+                            "                <div class=\"water\">\n" +
+                            "                    <span>空气湿度：</span>\n" +
+                            "                    <span>" + humidity + "</span>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"pesticide\">\n" +
+                            "                    <span><a href=\"#\">农药使用情况</a></span>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"clear\"></div>\n" +
+                            "        </div>\n" +
+                            "            </div>")
+                        len += 1;
+                    }
+                    else {
+
+                        $("#products").append("<div class=\"mybolck\">\n" +
+                            "                    <div class=\"syimage"+len.toString()+" syimage\">\n" +
+                            "                        <img class=\"symage_img"+len.toString()+" symage_img\" alt=\"苹果\" src="+list.data.rows[i].productImg+">\n" +
+                            "                        <i class=\"syimage_title"+len.toString()+" syimage_title\"><a href=\"#\">---农产品溯源---</a></i>\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"syinform\">\n" +
+                            "                        <div class=\"introduce\">\n" +
+                            "                            <span>产品介绍：</span>\n" +
+                            "                            <span><a href=\"#\">"+productname+"（详细信息）</a></span>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"temperature\">\n" +
+                            "                            <span class=\"tem\">温度(℃)：</span>\n" +
+                            "                            <span class=\"numtem\">"+template+"</span>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"sunlight\">\n" +
+                            "                            <span>光照强度：</span>\n" +
+                            "                            <span>"+lightIntensity+"</span>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"clear\"></div>\n" +
+                            "                        <div class=\"water\">\n" +
+                            "                            <span>空气湿度：</span>\n" +
+                            "                            <span>"+humidity+"</span>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"pesticide\">\n" +
+                            "                            <span><a href=\"#\">农药使用情况</a></span>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"clear\"></div>\n" +
+                            "                </div>")
+                        len += 1;
+                    }
+                }
+            }
+        }
+
+    </script>
+</head>
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    #page {
+        background-color: #76B34B; /*-------------------整体的背景颜色  */
+        height: 100%;
+    }
+
+    #top {
+        width: 100%;
+        height: 70px;
+    }
+
+    #top_left {
+        width: 17%;
+        float: left;
+    }
+
+    #top_left img {
+        width: 265px;
+        height: 50px;
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+
+    #top_right {
+        width: 900px;
+        float: right;
+        margin-left: 100px;
+        margin-top: 30px;
+    }
+
+    #top_right div {
+        float: left;
+        width: 100px;
+        height: 26px;
+        border: 0.5px solid #3AD56F;
+        padding-top: 5px;
+        margin-right: 17px;
+        border-radius: 20px;
+        /* font-family: cursive;*/
+        font-size: 15px;
+        /* font-weight: bold; */
+
+    }
+
+    .top_rightThird {
+        background-color: #139D5A;
+    }
+
+    #top_right div:hover {
+        cursor: pointer;
+        background-color: #139D5A;
+    }
+
+    #top_right a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #main {
+        width: 100%;
+        height: auto;
+    }
+
+    #main_title {
+        width: 1000px;
+        height: 50px;
+        margin: 10px auto 0px;
+        color: white;
+        font-size: 25px;
+        padding-top: 20px;
+        text-shadow: 4px 4px 4px gray;
+    }
+
+    #main_image {
+        overflow: auto;
+        width: 89%;
+        height: auto;
+        margin: 30px auto 0px;
+        border: 1px solid green;
+        padding-left: 10px;
+        border-radius: 7px;
+        padding-bottom: 20px;
+    }
+
+    /* .myimage1{
+        overflow:auto;
+        width: 89%;
+        height:auto;
+        margin: 30px auto 0px;
+        border: 1px solid green;
+        padding-left: 10px;
+        border-radius:7px;
+        padding-bottom: 20px;
+    } */
+    .mybolck {
+
+        height: auto;
+        width: 22%;
+        border: 0px solid;
+        float: left;
+        margin-right: 49px;
+        padding-left: 80px;
+    }
+
+    .syimage {
+        width: 220px;
+        height: 150px;
+        border: 1px solid #fff;
+        position: relative;
+        left: 16px;
+        top: 40px;
+        border-radius: 7px;
+        background-color: #76B34B;
+    }
+
+    .syimage i {
+        position: relative;
+        top: -85px;
+        left: 45px;
+        font-family: inherit;
+        display: none;
+    }
+
+    .syimage a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .syimage:hover {
+        /* opacity:0.6;
+        background-color:gray; */
+        cursor: pointer;
+    }
+
+    .syimage img {
+        width: 220px;
+        height: 150px;
+        border-radius: 7px;
+    }
+
+    .syinform {
+        width: 250px;
+        height: 200px;
+        border: 1px solid #fff;
+        border-radius: 7px;
+        background: #8CEE80;
+    }
+
+    .syinform:hover {
+        border-color: green;
+        cursor: pointer;
+    }
+
+    .introduce {
+        width: 100%;
+        height: 50%;
+        border-bottom: 1px solid #fff;
+    }
+
+    .introduce span {
+        position: relative;
+        top: 55px;
+        left: 10px;
+    }
+
+    .introduce a {
+        color: olive;
+        text-decoration: none;
+    }
+
+    .introduce a:hover {
+        color: green;
+    }
+
+    .temperature {
+        width: 49%;
+        height: 25%;
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        float: left;
+    }
+
+    .temperature span {
+        position: relative;
+        top: 15px;
+        left: 10px;
+    }
+
+    .sunlight {
+        width: 50%;
+        height: 25%;
+        border-bottom: 1px solid #fff;
+        float: left;
+    }
+
+    .sunlight span {
+        position: relative;
+        top: 15px;
+        left: 5px;
+    }
+
+    .water {
+        width: 49%;
+        height: 24%;
+        border-right: 1px solid #fff;
+        float: left;
+    }
+
+    .water span {
+        position: relative;
+        top: 15px;
+        left: 5px;
+    }
+
+    .pesticide {
+        width: 50%;
+        height: 24%;
+        float: left;
+    }
+
+    .pesticide span {
+        position: relative;
+        top: 15px;
+        left: 10px;
+    }
+
+    .pesticide a {
+        color: olive;
+        text-decoration: none;
+    }
+
+    .pesticide a:hover {
+        color: green;
+    }
+
+    .sign {
+        width: 80%;
+        height: auto;
+        margin: 10px auto 0px;
+        padding-top: 20px;
+    }
+
+    .sign1 {
+        height: 5px;
+        width: 60px;
+        border: 1px solid olive;
+        border-radius: 7px;
+        background-color: green;
+        float: left;
+        margin-left: 411px;
+    }
+
+    .sign2 {
+        height: 5px;
+        width: 60px;
+        border: 1px solid olive;
+        border-radius: 7px;
+        background-color: rgba(255, 255, 255, 0.1);
+        float: left;
+        margin-left: 10px;
+    }
+
+    .myimage2 {
+        display: none;
+    }
+
+    .image_buttom {
+        width: 100%;
+        height: auto;
+        margin-top: 15px;
+    }
+
+    .bu1 {
+        border: 1px solid olive;
+        width: 19px;
+        height: 19px;
+        float: left;
+        background-color: green;
+        margin-left: 575px;
+    }
+
+    .bu2 {
+        border: 1px solid olive;
+        width: 19px;
+        height: 19px;
+        float: left;
+        margin-left: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .bu1, .bu2:hover {
+        cursor: pointer;
+    }
+
+    #bottom {
+        width: 100%;
+        height: 25px;
+        background-color: #8Cc480;
+        padding-top: 5px;
+        margin-top: 5px;
+    }
+</style>
+<body>
+<div id="page">
+    <div id="top">
+        <div id="top_left">
+            <img alt="沈阳农业大学" src="images/syaulg.png">
+        </div>
+        <div id="top_right">
+            <div align="center"><a href="/index">首页</a></div>
+            <div align="center"><a href="/place">基地介绍</a></div>
+            <div align="center"  class="top_rightThird"><a href="/product">果农产品</a></div>
+            <div align="center"><a href="/information">信息动态</a></div>
+            <div align="center"><a href="/aboutus">联系我们</a></div>
+        </div>    </div>
+    <div class="clear"></div>
+    <div id="main">
+        <div id="main_title" align="center">
+            <span>沈阳农业大学智慧农业</span>
+        </div>
+        <div class="clear"></div>
+        <div id="main_image">
+            <div class="myimage1" id="products">
+                <div class="mybolck">
+                    <div class="syimage">
+                        <img class="symage_img" alt="苹果" src="images/apple.jpg">
+                        <i class="syimage_title"><a href="/applep">--- 苹果基地 ---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="/apples">苹果（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">26</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>21</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>40</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- ---------------------------------------1----------------------------------- -->
+                <div class="mybolck">
+                    <div class="syimage1 syimage">
+                        <img class="symage_img1 symage_img" alt="苹果" src="images/stra.jpg">
+                        <i class="syimage_title1 syimage_title"><a href="/strap">--- 草莓基地 ---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="/stra">草莓（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">22</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>23</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>21</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- ----------------------------2--------------------------- -->
+                <div class="mybolck">
+                    <div class="syimage2 syimage">
+                        <img class="symage_img2 symage_img" alt="苹果" src="images/shumei.jpg">
+                        <i class="syimage_title2 syimage_title"><a href="/treep">--- 树莓基地 ---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="/tree">树莓（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">26</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>20</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>31</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- ------------------3------------------------------------- -->
+                <div class="mybolck">
+                    <div class="syimage3 syimage">
+                        <img class="symage_img3 symage_img" alt="苹果" src="images/mypu4.jpg">
+                        <i class="syimage_title3 syimage_title"><a href="#">--- 葡萄基地 ---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="#">葡萄（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">21</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>18</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>36</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- ----------------------------------------4----------------- -->
+                <div class="mybolck">
+                    <div class="syimage4 syimage">
+                        <img class="symage_img4 symage_img" alt="苹果" src="images/haitang.jpg">
+                        <i class="syimage_title4 syimage_title"><a href="#">--- 海棠基地 ---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="#">海棠（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">22</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>36</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>38</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- ------------------------------------5--------------------- -->
+                <div class="mybolck">
+                    <div class="syimage5 syimage">
+                        <img class="symage_img5 symage_img" alt="苹果" src="images/shanzha.jpg">
+                        <i class="syimage_title5 syimage_title"><a href="#">--- 山楂基地 ---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="#">山楂（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">23</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>22</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>38</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="myimage2" id="products2">
+                <div class="mybolck">
+                    <div class="syimage8 syimage">
+                        <img class="symage_img8 symage_img" alt="苹果" src="images/baicai.jpg">
+                        <i class="syimage_title8 syimage_title"><a href="#">--- 白菜基地 ---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="#">白菜（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">21</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>16</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>36</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- ----------------------------------1---------------------- -->
+                <div class="mybolck">
+                    <div class="syimage6 syimage">
+                        <img class="symage_img6 symage_img" alt="苹果" src="images/tomato.jfif">
+                        <i class="syimage_title6 syimage_title"><a href="#">---西红柿基地---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="#">西红柿（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">26</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>19</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>22</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- --------------------------------------2----------- -->
+                <div class="mybolck">
+                    <div class="syimage7 syimage">
+                        <img class="symage_img7 symage_img" alt="苹果" src="images/shuidao.jfif">
+                        <i class="syimage_title7 syimage_title"><a href="#">--- 水稻基地 ---</a></i>
+                    </div>
+                    <div class="syinform">
+                        <div class="introduce">
+                            <span>产品介绍：</span>
+                            <span><a href="#">水稻（详细信息）</a></span>
+                        </div>
+                        <div class="temperature">
+                            <span class="tem">温度(℃)：</span>
+                            <span class="numtem">23</span>
+                        </div>
+                        <div class="sunlight">
+                            <span>光照强度：</span>
+                            <span>18</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="water">
+                            <span>空气湿度：</span>
+                            <span>36</span>
+                        </div>
+                        <div class="pesticide">
+                            <span><a href="#">农药使用情况</a></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- -------------------------3---------------------- -->
+            </div>
+            <div class="clear"></div>
+            <div class="sign">
+                <div class="sign1"></div>
+                <div class="sign2"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="image_buttom">
+                <div class="bu1" align="center"><span>1</span></div>
+                <div class="bu2" align="center"><span>2</span></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="bottom" align="center">
+        <span>版权所有：沈阳农业大学</span>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var syimage = document.querySelector(".syimage");
+    var syimage_title = document.querySelector(".syimage_title");
+    var symage_img = document.querySelector(".symage_img");
+
+    var syimage1 = document.querySelector(".syimage1");
+    var syimage_title1 = document.querySelector(".syimage_title1");
+    var symage_img1 = document.querySelector(".symage_img1");
+
+    var syimage2 = document.querySelector(".syimage2");
+    var syimage_title2 = document.querySelector(".syimage_title2");
+    var symage_img2 = document.querySelector(".symage_img2");
+
+
+    var syimage3 = document.querySelector(".syimage3");
+    var syimage_title3 = document.querySelector(".syimage_title3");
+    var symage_img3 = document.querySelector(".symage_img3");
+
+
+    var syimage4 = document.querySelector(".syimage4");
+    var syimage_title4 = document.querySelector(".syimage_title4");
+    var symage_img4 = document.querySelector(".symage_img4");
+
+
+    var syimage5 = document.querySelector(".syimage5");
+    var syimage_title5 = document.querySelector(".syimage_title5");
+    var symage_img5 = document.querySelector(".symage_img5");
+
+
+    var syimage6 = document.querySelector(".syimage6");
+    var syimage_title6 = document.querySelector(".syimage_title6");
+    var symage_img6 = document.querySelector(".symage_img6");
+
+
+    var syimage7 = document.querySelector(".syimage7");
+    var syimage_title7 = document.querySelector(".syimage_title7");
+    var symage_img7 = document.querySelector(".symage_img7");
+
+
+    var syimage8 = document.querySelector(".syimage8");
+    var syimage_title8 = document.querySelector(".syimage_title8");
+    var symage_img8 = document.querySelector(".symage_img8");
+
+
+    syimage.onmouseover = function () {
+        syimage_title.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img.style.opacity = "0.6";
+        syimage.style.borderColor = "green";
+    }
+    syimage.onmouseout = function () {
+        syimage_title.style.display = "none";
+        syimage.style.borderColor = "white";
+        symage_img.style.opacity = "1";
+    }
+
+    syimage1.onmouseover = function () {
+        syimage_title1.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img1.style.opacity = "0.6";
+        syimage1.style.borderColor = "green";
+    }
+    syimage1.onmouseout = function () {
+        syimage_title1.style.display = "none";
+        syimage1.style.borderColor = "white";
+        symage_img1.style.opacity = "1";
+    }
+
+    syimage2.onmouseover = function () {
+        syimage_title2.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img2.style.opacity = "0.6";
+        syimage2.style.borderColor = "green";
+    }
+    syimage2.onmouseout = function () {
+        syimage_title2.style.display = "none";
+        syimage2.style.borderColor = "white";
+        symage_img2.style.opacity = "1";
+    }
+
+    syimage3.onmouseover = function () {
+        syimage_title3.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img3.style.opacity = "0.6";
+        syimage3.style.borderColor = "green";
+    }
+    syimage3.onmouseout = function () {
+        syimage_title3.style.display = "none";
+        syimage3.style.borderColor = "white";
+        symage_img3.style.opacity = "1";
+    }
+
+    syimage4.onmouseover = function () {
+        syimage_title4.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img4.style.opacity = "0.6";
+        syimage4.style.borderColor = "green";
+    }
+    syimage4.onmouseout = function () {
+        syimage_title4.style.display = "none";
+        syimage4.style.borderColor = "white";
+        symage_img4.style.opacity = "1";
+    }
+
+    syimage5.onmouseover = function () {
+        syimage_title5.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img5.style.opacity = "0.6";
+        syimage5.style.borderColor = "green";
+    }
+    syimage5.onmouseout = function () {
+        syimage_title5.style.display = "none";
+        syimage5.style.borderColor = "white";
+        symage_img5.style.opacity = "1";
+    }
+
+    syimage6.onmouseover = function () {
+        syimage_title6.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img6.style.opacity = "0.6";
+        syimage6.style.borderColor = "green";
+    }
+    syimage6.onmouseout = function () {
+        syimage_title6.style.display = "none";
+        syimage6.style.borderColor = "white";
+        symage_img6.style.opacity = "1";
+    }
+
+    syimage8.onmouseover = function () {
+        syimage_title8.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img8.style.opacity = "0.6";
+        syimage8.style.borderColor = "green";
+    }
+    syimage8.onmouseout = function () {
+        syimage_title8.style.display = "none";
+        syimage8.style.borderColor = "white";
+        symage_img8.style.opacity = "1";
+    }
+
+    syimage7.onmouseover = function () {
+        syimage_title7.style.display = "block";
+        /* syinform.style.borderColor="green"; */
+        symage_img7.style.opacity = "0.6";
+        syimage7.style.borderColor = "green";
+    }
+    syimage7.onmouseout = function () {
+        syimage_title7.style.display = "none";
+        syimage7.style.borderColor = "white";
+        symage_img7.style.opacity = "1";
+    }
+
+    var sign1 = document.querySelector(".sign1");
+    var sign2 = document.querySelector(".sign2");
+    var myimage1 = document.querySelector(".myimage1");
+    var myimage2 = document.querySelector(".myimage2");
+    var bu1 = document.querySelector(".bu1");
+    var bu2 = document.querySelector(".bu2");
+    bu1.onclick = function () {
+        myimage1.style.display = "block";
+        myimage2.style.display = "none";
+        sign1.style.backgroundColor = "green";
+        sign2.style.backgroundColor = "rgba(255,255,255,0.1)";
+        bu1.style.backgroundColor = "green";
+        bu2.style.backgroundColor = "rgba(255,255,255,0.1)";
+    }
+    bu2.onclick = function () {
+        myimage2.style.display = "block";
+        myimage1.style.display = "none";
+        sign2.style.backgroundColor = "green";
+        sign1.style.backgroundColor = "rgba(255,255,255,0.1)";
+        bu2.style.backgroundColor = "green";
+        bu1.style.backgroundColor = "rgba(255,255,255,0.1)";
+    }
+
+</script>
+</html>

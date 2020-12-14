@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>联系我们</title>
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<style>
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	.clear{clear: both;}
+	 #page{
+    	background-color: #76B34B;/*-------------------整体的背景颜色  */
+    	height: 100%;
+    }
+	#top{
+		width:100%;
+		height:70px;
+	}
+	#top_left{
+		width: 17%;
+		float: left;
+	}
+	#top_left img{
+		width: 265px;
+		height: 50px;
+		margin-left: 30px;
+		margin-top: 20px;
+	}
+	#top_right{
+		width: 900px;
+		float: right;
+		margin-left: 100px;
+		margin-top: 30px;
+	}
+	#top_right div{
+		float: left;
+		width: 100px;
+		height: 26px;
+		border: 0.5px solid #3AD56F;
+		padding-top: 5px;
+		margin-right: 17px;
+		border-radius:20px;
+		/* font-family: cursive;*/
+		font-size: 15px;
+		/* font-weight: bold; */
+		
+	}
+	.top_rightFifth{
+		background-color: #139D5A;
+	}
+	#top_right div:hover{
+		cursor: pointer;
+		background-color: #139D5A;
+	}
+	#top_right a{
+		text-decoration: none;
+		color: white;
+	}
+	#main{
+		width: 100%;
+		height: auto;
+	}
+	#main_title{
+		width: 100%;
+		height: auto;
+		margin-top: 70px;
+		text-shadow: 4px 4px 4px gray;
+	}
+	#main_title img{
+		width: 30px;
+		height: 30px;
+		border-radius:7px;
+		margin-bottom: -5px;
+	}
+	#main_title span{
+		font-size: 25px;
+		margin-left: 5px;
+		font-family: fantasy;
+		font-weight: bold;
+		color: white;
+	}
+	#main_body{
+		width: 65%;
+		height: auto;
+		border: 1px solid green;
+		margin: 20px auto 0px;
+		border-radius:7px;
+		opacity:0.7;
+		background-color: white;
+	}
+	#mybody1{
+		width: 30%;
+		height: 430px;
+		border-right: 1px solid gray;
+		float: left;
+	}
+	#mybody2{
+		width: 34%;
+		height: 430px;
+		border-right: 1px solid gray;
+		float: left;
+	}
+	#mybody3{
+		width: 35%;
+		height: 430px;
+		float: left;
+	}
+	.wechat{
+		width: 100%;
+		height: 50%;
+		/* border-bottom: 1px solid white; */
+	}
+	.wechat span{
+		display: block;
+		position: relative;
+		top: 20px;
+	}
+	.wechat img{
+		position: relative;
+		top: 30px;
+		width: 150px;
+		height: 150px;
+		/* border: 1px solid white; */
+	}
+	.qq span{
+		display: block;
+		position: relative;
+		top: 20px;
+	}
+	.qq img{
+		position: relative;
+		top: 30px;
+		width: 150px;
+		height: 150px;
+		border: 1px solid white;
+	}
+	.num{
+		width: 100%;
+		height: 50%;
+		border-bottom: 1px solid gray;
+	}
+	.num h2{
+		position: relative;
+		top:110px;
+		left: 30px;
+		text-shadow: 1px 1px 1px gray;
+	}
+	.num span{
+		position: relative;
+		top:130px;
+		left: 150px;
+		font-size: 18px;
+		text-shadow: 1px 1px 1px gray;
+	}
+	.place h2{
+		position: relative;
+		top:95px;
+		left: 30px;
+	}
+	.place span{
+		position: relative;
+		top:120px;
+		left: 60px;
+		font-size: 16px;
+		display: block;
+		width: 240px;
+		height: 50px;
+		text-shadow: 1px 1px 1px gray;
+	}
+	.us{
+		position: relative;
+		top: 70px;
+		left: 40px;
+	}
+	.myname{
+		position: relative;
+		top: 110px;
+		left:35px;
+	}
+	.my_name{
+		height: 30px;
+		width: 56px;
+		border-radius:7px;
+		border-color: green;
+		font-size: 15px;
+		padding-left: 25px;
+	}
+	.mynum{
+		position: relative;
+		top:76px;
+		left: 132px;
+	}
+	.my_num{
+		height: 30px;
+		width: 100px;
+		border-radius:7px;
+		border-color: green;
+		font-size: 15px;
+		padding-left: 25px;
+	}
+	.mymail{
+		position: relative;
+		top: 100px;
+		left: 35px;
+	}
+	.my_mail{
+		height: 30px;
+		width: 200px;
+		border-radius:7px;
+		border-color: green;
+		font-size: 15px;
+		padding-left: 25px;
+	}
+	.mysuggest{
+		position: relative;
+		top: 120px;
+		left: 35px;
+	}
+	.my_suggest{
+		height: 100px;
+		width: 225px;
+		border-radius:7px;
+		border-color: green;
+		font-size: 15px;
+		/* padding-left: 25px; */
+	}
+	.mysubmit{
+		position: relative;
+		top:135px;
+		left: 100px;
+		
+	}
+	.my_submit{
+		height: 30px;
+		width: 150px;
+		border-radius:7px;
+		border-color: green;
+		font-size: 15px;
+		background-color: green;
+	}
+	.N{
+		position: absolute;
+		top: 10px;
+		left: 5px;
+	}
+	.M{
+		position: absolute;
+		top: 10px;
+		left: 5px;
+	}
+	.E{
+		position: absolute;
+		top: 10px;
+		left: 5px;
+	}
+	#bottom{
+		width: 100%;
+		height: 25px;
+		background-color: #8Cc480;
+		padding-top: 5px;
+		margin-top: 5px;
+	}
+	
+</style>
+<body>
+	<div id="page">
+		<div id="top">
+			<div id="top_left">
+				<img alt="沈阳农业大学" src="images/syaulg.png">
+			</div>
+			<div id="top_right">
+				<div align="center"><a href="/index">首页</a></div>
+				<div align="center"><a href="/place">基地介绍</a></div>
+				<div align="center"><a href="/product">果农产品</a></div>
+				<div align="center"><a href="/information">信息动态</a></div>
+				<div align="center" class="top_rightFifth"><a href="/aboutus">联系我们</a></div>
+			</div>		</div>
+		<div class="clear"></div>
+		<div id="main">
+			<div id="main_title" align="center">
+				<img alt="信箱" src="images/suggest.png">
+				<span>联系我们</span>
+			</div>
+			<div id="main_body">
+				<div id="mybody1">
+					<div class="wechat" align="center">
+						<span>微信</span>
+						<img alt="微信" src="images/Wechat.jpg">
+					</div>
+					<div class="qq" align="center">
+						<span>QQ</span>
+						<img alt="QQ" src="images/QQ.jpg">
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="mybody2">
+					<div class="num">
+						<h2>咨询电话：</h2>
+						<span>15265766312</span>
+					</div>
+					<div class="place">
+						<h2>地址：</h2>
+						<span>辽宁省 沈阳市东陵路120路 沈阳农业大学天柱山种植基地</span>
+					</div>
+				</div>
+				<div id="mybody3">
+					<div class="us">
+						<h2>留言板</h2>
+					</div>
+					<div class="you">
+						<form action="/publish/save" method="post">
+							<div class="myname">
+								<i class="N"><img alt="name" src="images/name.png"></i>
+								<input type="text" name="name" placeholder="姓名" class="my_name">
+							</div>
+							<div class="mynum">
+								<i class="M"><img alt="name" src="images/num.png"></i>
+								<input type="number" name="number" placeholder="电话" class="my_num">
+							</div>
+							<div class="mymail">
+								<i class="E"><img alt="name" src="images/email.png"></i>
+								<input type="email" name="email" placeholder="邮箱" class="my_mail">
+							</div>
+							<div class="mysuggest">
+								<textarea rows="5" cols="15" placeholder="不过100个字" class="my_suggest"></textarea>
+							</div>
+							<div class="mysubmit">
+								<input type="submit" value="提交" class="my_submit">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="bottom" align="center">
+			<span>版权所有：沈阳农业大学</span>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	
+</script>
+</html>

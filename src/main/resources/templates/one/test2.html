@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试1</title>
+    <script src="webjars/jquery/3.3.1/jquery.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <script type="text/javascript">
+        $(function () {
+            // 1.路径
+            var url = "/product/productList";
+            // 2.请求参数
+            var param = "";
+
+            //get请求
+            /*$.get(url,function (data) {
+                alert("get");
+                alert(data);
+                alert(data.getCode())
+            },"json")*/
+
+            var page = 1;
+            var size = 1;
+            //ajax
+            $.ajax({
+                "url":url,
+                "success":function (data) {
+                    showData(data);
+                    alert("成功");
+                    alert(data.code)
+                    $("#d1").val(data.data.rows)
+                },
+                "data":{
+                    "page":1,
+                    "size":1
+                },
+                "dataType":"json",
+                "type":"GET",
+                "error":function () {
+                    alert("服务器繁忙");
+                }
+            })
+        })
+
+        function showData(list) {
+            var str = "";
+            alert("111")
+            // alert(list.length)
+            // alert(list.data.rows[0].productName);
+            for (var i = 0; i < list.data.rows.length; i++) {
+                alert(list.message);
+                alert(list.data.rows[0].productName);
+                str = "<tr><td>"+list.data.rows[i].productName+"</td><td>"+list.data.rows[i].productPrice+"</td></tr>";
+                alert(str)
+                $("#tab").append(str)
+            }
+        }
+    </script>
+</head>
+<body>
+<table id="tab">
+    <tr>
+        <th>商品名称</th>
+        <th>商品价格</th>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 首页内容，关于一些整体的计划，界面设计追求简便明了，主要界面分为三部分（top main bottom） -->
+<title>农产品溯源</title>
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+	<script src="webjars/jquery/3.3.1/jquery.js"></script>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		var searchproduct = function (data) {
+        var content = $("#search1").val();
+		alert(content)
+        if (content=="树莓"||content=="树"||content=="莓"){
+            window.location.href("tree");
+        }
+    };
+
+
+		
+	</script>
+</head>
+<style type="text/css">
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	.clear{clear: both;}
+	 #page{
+    	background-color: #76B34B;/*-------------------整体的背景颜色  */
+    	height: 100%;
+    }
+	#top{
+		width:100%;
+		height:70px;
+	}
+	#top_left{
+		width: 17%;
+		float: left;
+	}
+	#top_left img{
+		width: 265px;
+		height: 50px;
+		margin-left: 30px;
+		margin-top: 20px;
+	}
+	#top_right{
+		width: 900px;
+		float: right;
+		margin-left: 100px;
+		margin-top: 30px;
+	}
+	#top_right div{
+		float: left;
+		width: 100px;
+		height: 26px;
+		border: 0.5px solid #3AD56F;
+		padding-top: 5px;
+		margin-right: 17px;
+		border-radius:20px;
+		/* font-family: cursive;*/
+		font-size: 15px;
+		/* font-weight: bold; */
+		
+	}
+	.top_rightFirst{
+		background-color: #139D5A;
+	}
+	#top_right div:hover{
+		cursor: pointer;
+		background-color: #139D5A;
+	}
+	#top_right a{
+		text-decoration: none;
+		color: white;
+	}
+	/*------------------------------------main------------------------------------  */
+	#main{
+		width: 100%;
+		/* margin:0px auto 20px; */
+		border: 0px solid #C0D9FF;
+		height: auto;
+		background-color:#76B34B;
+	}
+	#main_text{
+	    width: 100%;
+		height: auto;
+		margin:0px auto;
+		/* margin-top: 50px; */
+		padding-top:50px;
+		padding-bottom:15px;
+		/* background-image: url("images/rice1.png") ; */
+		border-radius: 20px;
+		
+		
+	}
+	#Mtext{
+		font-size: 55px;
+		margin-bottom: 20px ; 
+		color: white;
+		width: 100%;
+		text-shadow: 5px 5px 5px gray;
+	}
+	#mtext{
+		/* margin:0px auto 20px; */
+		color: white;
+		font-size: 18px;
+		margin-bottom: 10px;
+		width: 950px;
+		text-shadow: 2px 2px 2px gray;
+	}
+	
+	
+	/* ------------------------------------------------------------------------------------ */
+	ul{
+		list-style: none;
+	}
+	#main_image{
+		width: 1000px;
+    	height: 350px;     /*其实就是图片的高度*/
+    	border: 3px #8CEE80 solid;
+    	border-radius:5px;
+    	margin: 5px auto;
+    	position: relative;
+    	overflow: hidden;    /*此处需要将溢出框架的图片部分隐藏*/
+	}
+	#main_image img{
+		width: 1000px;
+		height: 350px;
+	}
+	#main_image li :hover{
+		cursor: pointer;
+	}
+	#main_image ul{
+		width: 4000px;
+		position: relative;
+	}
+	#main_image ul li{
+		float: left;     /*让四张图片左浮动，形成并排的横着布局，方便点击按钮时的左移动*/
+    	width: 1000px;
+	}
+	.imagetitle{
+		width:100%;
+		height:26px;
+		border:0px solid #fff;
+		position: absolute;
+		left: 0px;
+		top:315px;
+		font-size: 16px;
+		color: #fff;
+		padding-top: 8px;
+		padding-left: 20px;
+		background-color: green;
+		opacity:0.4;
+	}
+	#main_image .showNav{/*用绝对定位给数字按钮进行布局*/
+		position: absolute;
+    	right: 10px;
+    	bottom: 5px;
+   	 	text-align:center;
+    	font-size: 12px;    
+    	line-height: 20px;
+	}
+	#main_image .showNav span{
+		cursor: pointer;
+    	display: block;
+    	float: left;
+    	width: 20px;
+    	height: 20px;
+    	background:  #8CEE80;
+    	margin-left: 2px;
+    	color: #fff;
+	}
+	#main_image .showNav .active{
+		background-color: #76B34B;
+	}
+	
+	#search{
+		width: 1000px;
+		height: 30px;
+		border-color: blue;
+		background-color: #8CEE80;
+		margin: 0px auto;
+	}
+	#mysearch{
+		float: left;
+		margin-left: 30px;
+		margin-top: 6px;
+	}
+	#mysearch input[type="text"]{
+		height: 22px;
+		width:130px;
+		border: 1px solid #567;
+		border-radius:9px;
+		
+	}
+	#mysearch input[type="image"]{
+		margin-bottom:-5px;
+	}
+	#sysearch {
+		margin-top:4px;
+		float: right;
+		margin-right:50px;
+		font-size: 15px;
+		color: white;
+	}
+	
+	/*-----------------------------------------------------------------------*/
+	#main_body{
+		margin: 2px auto 0px;
+		width: 1300px;
+		height: auto;
+		border: 2px solid #fff;
+		border-radius:9px;
+		padding: 20px;
+		/* background-image:url("images/login1.jpg");
+		background-size:100% 100%; */
+		/* background-color:#8CDC80 ; */ 
+		background-color: #fff;
+		opacity:0.8;
+	}
+	#main_title{
+		font-size: 18px;
+		
+	}
+	 #sub_title{
+	 	width:150px;
+	 	height:25px;
+		position:relative;
+		top: 15px;
+		left: 0px;
+		/* background-color: #8CDC80; */
+		background-color: #fff;
+	} 
+	#main_content{
+		width: 900px;
+		height:240px;
+		margin: 0px auto 20px;
+		border: 1.5px solid #000;
+		border-radius:9px;
+		padding-top: 70px;
+	}
+	#main_content:hover{
+		border-color: #229A07;
+	}
+	#content1{
+		float: left;
+		margin-left: 60px;
+		border: 2px solid #000;
+		width: 200px;
+		height: 170px;
+		padding-top: 10px;
+		border-radius:7px;
+		
+	}
+	#content2{
+		float: left;
+		margin-left: 90px;
+		border: 2px solid #000;
+		width: 200px;
+		height: 170px;
+		padding-top: 10px;
+		border-radius:7px;
+	}
+	#content3{
+		margin-left: 640px;
+		border: 2px solid #000;
+		width: 200px;
+		height: 170px;
+		padding-top: 10px;
+		border-radius:7px;
+	}
+	#content1:hover{
+		border-color: #229A07;
+	}
+	#content2:hover{
+		border-color: #229A07;
+	}
+	#content3:hover{
+		border-color: #229A07;
+	}
+	.mycontent{
+		font-size: 16px;
+		padding-left: 40px;
+		padding-top: 10px;
+	}
+	#main_content a{
+		text-decoration: none;
+		color: black;
+	}
+	#main_content li{
+		width: 170px;
+		height: 34px;
+		border: 0px solid #fff;
+		border-radius: 5px;
+		font-size: 22px;
+		margin-top: 15px;
+		padding-left: 20px;
+		text-shadow: 1px 1px 1px gray;
+	}
+	#main_content li:hover{
+		cursor: pointer;
+		background-color: #229A07;
+	}
+	.cover1,.cover2,.cover3{
+		position:relative;
+		top: -145px;
+		left: 190px;
+		/* background-color: #8CDC80; */
+		background-color: #fff;
+		width: 15px;
+		height: 190px;
+	}
+	.catalog1{
+		position: absolute;
+		background-image: url("favicon.ico");
+		background-repeat: no-repeat;
+		background-size:30px 30px;
+		width: 30px;
+		height: 30px;
+		margin-top: 5px;
+		margin-left: 6px;
+	}
+	/** ***********bottom*************************************************/
+	#bottom{
+		width: 100%;
+		height: 25px;
+		background-color: #8Cc480;
+		padding-top: 5px;
+		margin-top: 5px;
+	}
+</style>
+<body>
+<!-- 对整体进行描述，page是一个总的盒子 -->
+	<div id="page">
+<!-------------------------------------- top是网页的最上端的一部分，包括logo和一些功能 -->
+		<div id="top">
+			<div id="top_left">
+				<img alt="沈阳农业大学" src="images/syaulg.png">
+			</div>
+			<div id="top_right">
+				<div align="center" class="top_rightFirst"><a href="/index">首页</a></div>
+				<div align="center"><a href="/place">基地介绍</a></div>
+				<div align="center"><a href="/product">果农产品</a></div>
+				<div align="center"><a href="/information">信息动态</a></div>
+				<div align="center"><a href="/aboutus">联系我们</a></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+<!------------------------------------- main是网页的中间部分，包括top下面的轮播图（main_image）和整体的一方案计划（main_body） -->
+		<div id="main">
+			<div id=main_text align="center">
+				<div id="Mtext">农产品溯源</div>
+				<div id="mtext">操作规程管理、生产计划管理、田间档案管理、物联网监控、采收管理、仓储管理、加工管理、检验检测、销售管理、物流管理、溯源管理、统计分析，实现全链条农业生产管理，全程信息可追溯。</div>
+			</div>
+			<div id=main_image>
+				<!-- 图片布局开始 -->
+				<ul>
+					<!--<li><img src="images/applep.jpg"></li>
+					<li><img src="images/racep.jpg"></li>
+					<li><img src="images/strap.jpg"></li>
+					<li><img src="images/shanzhap.jpg"></li>-->
+					<li><img src="images/1.jfif"></li>
+					<li><img src="images/2.jpeg"></li>
+					<li><img src="images/3.jpeg"></li>
+					<li><img src="images/4.jpeg"></li>
+				</ul>
+				<!-- 图片布局结束 -->
+				<div class="imagetitle">
+					<span>沈阳农业大学农产品溯源</span>
+				</div>
+				<div class="showNav">
+					<span class="active">1</span>
+                	<span>2</span>
+                	<span>3</span>
+                	<span>4</span>
+				</div>
+				<!-- 布局按钮结束 -->
+			</div>
+			<div class="clear"></div>
+			<div id="search">
+				<div id="mysearch">
+					<form action="#" method="post">
+						<span>Search</span>
+						<input type="text" name="name" placeholder="请输入产品关键字" id="search1"/>
+			    		<input type="image" src="images/serchbutton.gif" onclick="searchproduct(data)"/>
+
+					</form>
+				</div>
+				<div id="sysearch">
+					<span>沈阳农业大学天柱山</span>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div id=main_body>
+				<div id="main_title" align="center">
+					<div id="sub_title">整体解决方案</div>
+				</div>
+				<div id="main_content">
+					<div id="content1">
+						<i class="catalog1"></i>
+						<div class="mycontent">建设阶段</div>
+						<ul>
+							<li class=catalog><a href="interdata">物联网监控</a></li>
+							<li class=catalog><a href="sudata">环境数据检测</a></li>
+						</ul>
+						<div class="cover1"></div>
+					</div>
+					<div id="content2">
+						<i class="catalog1"></i>
+						<div class="mycontent">生产阶段</div>
+						<ul>
+							<li class=catalog><a href="biocide">农药使用</a></li>
+							<li class=catalog><a href="#">农场生产管理</a></li>
+						</ul>
+						<div class="cover2"></div>
+					</div>
+					<div id="content3">
+						<i class="catalog1"></i>
+						<div class="mycontent">销售阶段</div>
+						<ul>
+							<li class=catalog><a href="#">农产品包装</a></li>
+							<li class=catalog><a href="#">农产品溯源</a></li>
+						</ul>
+						<div class="cover3"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!------------------------------------------- bottom是网页的底部，和top一样基本保持不变 -->
+		<div class="clear"></div>
+		<div id="bottom" align="center">
+			<span>版权所有：沈阳农业大学</span>
+		</div>
+	</div>
+</body>
+<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    var slideShow=$("#main_image"),     //获取最外层框架的名称
+        ul=slideShow.find("ul"),      
+        showNumber=slideShow.find(".showNav span"),//获取按钮
+        oneWidth=slideShow.find("ul li").eq(0).width();   //获取每个图片的宽度
+        var timer=null;   //定时器返回值，主要用于关闭定时器
+        var iNow=0;      //iNow为正在展示的图片索引值，当用户打开网页时首先显示第一张图，即索引值为0
+        
+        showNumber.on("click",function(){           //为每个按钮绑定一个点击事件      
+            $(this).addClass("active").siblings().removeClass("active");   //按钮点击时为这个按钮添加高亮状态，并且将其他按钮高亮状态去掉
+            var index=$(this).index();  //获取哪个按钮被点击，也就是找到被点击按钮的索引值
+            iNow=index;
+            ul.animate({
+                "left":-oneWidth*iNow,   //注意此处用到left属性，所以ul的样式里面需要设置position: relative; 让ul左移N个图片大小的宽度，N根据被点击的按钮索引值iNOWx确定
+            })
+        });
+        
+        timer=setInterval(function(){        //打开定时器
+            iNow++;                          //让图片的索引值次序加1，这样就可以实现顺序轮播图片
+            if(iNow>showNumber.length-1){    //当到达最后一张图的时候，让iNow赋值为第一张图的索引值，轮播效果跳转到第一张图重新开始
+                iNow=0;
+            }
+            showNumber.eq(iNow).trigger("click");    //模拟触发数字按钮的click
+        },6000);   //5000为轮播的时间
+})
+</script>
+</html>
